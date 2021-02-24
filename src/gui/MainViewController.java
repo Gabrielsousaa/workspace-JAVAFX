@@ -17,6 +17,10 @@ import javafx.scene.control.ScrollPane;
 
 public class MainViewController implements Initializable {
 
+    static Object getMainScene() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @FXML
     private MenuItem menuitemVendedor;
     @FXML
