@@ -22,7 +22,7 @@ public class MainViewController implements Initializable {
     @FXML
     private MenuItem menuitemDepartamento;
     @FXML
-    private MenuItem MenuItemSobre;
+    private MenuItem menuItemSobre;
 
     @FXML
     public void onMenuItemVendedorAction() {
@@ -38,7 +38,9 @@ public class MainViewController implements Initializable {
     @FXML
 
     public void onMenuDepartamentoAction() {
-
+        
+    loadView("/gui/Iista_Departamento.fxml");
+    
     }
 
     @Override
