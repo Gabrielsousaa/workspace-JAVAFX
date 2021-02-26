@@ -15,6 +15,8 @@ import Application.Main;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 
+import model.servicos.departamento_Servico;
+
 public class MainViewController implements Initializable {
 
     static Object getMainScene() {
@@ -43,7 +45,7 @@ public class MainViewController implements Initializable {
 
     public void onMenuDepartamentoAction() {
         
-    loadView("/gui/Iista_Departamento.fxml");
+    loadView2("/gui/Iista_Departamento.fxml");
     
     }
 
@@ -72,4 +74,36 @@ public class MainViewController implements Initializable {
         }
 
     }
+    
+    
+        private synchronized void loadView2(String absoluteName) {
+        try {
+           
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
+            VBox newvBox = loader.load();
+            Scene mainScene = Main.getMainScene();
+            VBox mainVbox =(VBox) ((ScrollPane) mainScene.getRoot()).getContent();
+            
+            Node mainMenu = mainVbox.getChildren().get(0);
+            mainVbox.getChildren().clear();
+            mainVbox.getChildren().add(mainMenu);           
+            mainVbox.getChildren().addAll(newvBox.getChildren());
+            
+            DepartamentoListaController controller = loader.getController();
+            controller.setDepartamentoServico(new departamento_Servico());
+            controller.updateTableView();
+            
+            
+        } catch (IOException e) {
+            
+            Alerts.showAlert("IO EXCEPTION","ERROR LOADING VIEW",e.getMessage(),AlertType.ERROR);
+
+        }
+
+    }
+    
+    
+    
+    
+    
 }
